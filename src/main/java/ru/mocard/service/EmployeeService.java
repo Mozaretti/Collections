@@ -25,12 +25,13 @@ public class EmployeeService {
         return employee;
 
     }
-    public void delete(String firstName,String lastName) {
+    public Employee delete(String firstName, String lastName) {
         var employee = new Employee(firstName, lastName);
         if (employees.contains(employee)) {
             employees.remove(employee);
+            throw new EmployeeNotFoundException();
         }
-        throw new EmployeeNotFoundException();
+        return employee;
 
     }
     public Employee find(String firstName,String lastName) {
